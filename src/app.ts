@@ -22,10 +22,12 @@ const port = process.env.PORT || 4000;
 const mongoURI = process.env.MONGO_URI || "";
 const stripeKey = process.env.STRIPE_KEY || "";
 const redisURI = process.env.REDIS_URI || "";
+const redisPassword = process.env.REDIS_PASSWORD || "";
+const redisPort = Number(process.env.REDIS_PORT) ;
 export const redisTTL = process.env.REDIS_TTL || 60 * 60 * 4;
 
 connectDB(mongoURI);
-export const redis = connectRedis(redisURI);
+export const redis = connectRedis(redisURI,redisPort, redisPassword);
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
